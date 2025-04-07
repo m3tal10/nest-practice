@@ -1,10 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { UserRepository } from './users.repository';
+import { EntityManager } from '@mikro-orm/postgresql';
+import { User } from './users.entity';
 
 @Injectable()
 export class UsersService {
-  getUsers(): string {
-    console.log('Fetching all users');
-    return 'All users';
+  constructor(
+    private readonly userRepository: UserRepository,
+    private readonly em: EntityManager,
+  ) {}
+  async getUsers(): Promise<User[]> {
+    return this.userRepository.findAll();
   }
   createUser(): string {
     return 'User created';

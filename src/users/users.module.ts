@@ -5,7 +5,7 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { User } from './users.entity';
 
 @Module({
-  imports: [MikroOrmModule.forFeature([User])],
+  imports: [MikroOrmModule.forFeature({ entities: [User] })],
   controllers: [UsersController],
   providers: [UsersService],
 })
