@@ -16,4 +16,14 @@ export class User {
 
   @Property({ type: 'text' })
   bio = '';
+
+  @Property({ type: 'datetime', defaultRaw: 'CURRENT_TIMESTAMP' })
+  createdAt!: Date;
+
+  @Property({
+    type: 'datetime',
+    defaultRaw: 'CURRENT_TIMESTAMP',
+    onUpdate: () => new Date(),
+  })
+  updatedAt!: Date;
 }
