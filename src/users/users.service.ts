@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { UserRepository } from './users.repository';
 import { EntityManager } from '@mikro-orm/postgresql';
 import { User } from './users.entity';
