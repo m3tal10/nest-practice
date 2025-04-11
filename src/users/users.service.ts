@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { UserRepository } from './users.repository';
 import { EntityManager } from '@mikro-orm/postgresql';
 import { User } from './users.entity';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -13,7 +14,7 @@ export class UsersService {
     // throw new HttpException('Conflict', HttpStatus.CONFLICT);
     return this.userRepository.findAll();
   }
-  createUser(): string {
-    return 'User created';
+  createUser(createUserDto: CreateUserDto): CreateUserDto {
+    return createUserDto;
   }
 }
