@@ -10,7 +10,7 @@ export class UsersService {
     private readonly em: EntityManager,
   ) {}
   async getUsers(): Promise<User[]> {
-    throw new HttpException('Conflict', HttpStatus.CONFLICT);
+    // throw new HttpException('Conflict', HttpStatus.CONFLICT);
     return this.userRepository.findAll();
   }
   createUser(): string {
