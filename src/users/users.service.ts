@@ -14,7 +14,9 @@ export class UsersService {
     // throw new HttpException('Conflict', HttpStatus.CONFLICT);
     return this.userRepository.findAll();
   }
-  createUser(createUserDto: CreateUserDto): CreateUserDto {
-    return createUserDto;
+  async createUser(createUserDto: CreateUserDto): Promise<User> {
+    const user = this.userRepository.create(createUserDto);
+    await this.em.persistAndFlush(user);
+    return user;
   }
 }
