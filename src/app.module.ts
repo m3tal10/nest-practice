@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { ConfigModule } from '@nestjs/config';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 
 @Module({
   imports: [
@@ -14,6 +16,12 @@ import { ConfigModule } from '@nestjs/config';
     UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: TransformInterceptor,
+    },
+  ],
 })
 export class AppModule {}

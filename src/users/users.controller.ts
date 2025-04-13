@@ -1,12 +1,23 @@
-import { Body, Controller, Get, Post, UsePipes } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Post,
+  UsePipes,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { ZodValidationPipe } from 'src/common/pipes/zod-validation.pipe';
 import { CreateUserDto, createUserSchema } from './dto/create-user.dto';
+import { SetMessage } from 'src/common/decorators/set-message.decorator';
 
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
   @Get()
+  @SetMessage('Users retrieved successfully.')
+  @HttpCode(HttpStatus.OK)
   getUsers() {
     return this.usersService.getUsers();
   }
