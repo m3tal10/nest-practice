@@ -1,9 +1,11 @@
+import { Role } from 'src/common/decorators/roles.decorator';
+
 declare global {
   namespace Express {
     interface User {
       id: string;
       email: string;
-      role: string;
+      role: Role;
     }
     interface Request {
       user?: User;

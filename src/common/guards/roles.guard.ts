@@ -1,4 +1,9 @@
-import { CanActivate, ExecutionContext } from '@nestjs/common';
+import {
+  CanActivate,
+  ExecutionContext,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { Observable } from 'rxjs';
 import { Role, roles } from '../decorators/roles.decorator';
@@ -17,6 +22,12 @@ export class RolesGuard implements CanActivate {
     if (!requiredRoles) {
       return true;
     }
-    return false;
+    if (!user) {
+      throw new HttpException(
+        'You are not logged in please log in to continue.',
+        HttpStatus.UNAUTHORIZED,
+      );
+    }
+    return requiredRoles.includes(user?.role);
   }
 }
