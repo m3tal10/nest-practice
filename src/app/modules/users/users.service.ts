@@ -11,12 +11,13 @@ export class UsersService {
     private readonly em: EntityManager,
   ) {}
   async getUsers(): Promise<User[]> {
-    // throw new HttpException('Conflict', HttpStatus.CONFLICT);
     return this.userRepository.findAll();
   }
   async createUser(createUserDto: CreateUserDto): Promise<User> {
-    const user = this.userRepository.create(createUserDto);
-    await this.em.persistAndFlush(user);
+    const user = await this.userRepository.createUser(createUserDto);
     return user;
+  }
+  async findOneByEmail(email: string) {
+    return this.userRepository.findOneByEmail(email);
   }
 }

@@ -6,8 +6,8 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 import { RolesGuard } from './common/guards/roles.guard';
-import { AuthModule } from './app/modules/auth/auth.module';
 import { UsersModule } from './app/modules/users/users.module';
+import { AuthModule } from './app/modules/auth/auth.module';
 
 @Module({
   imports: [
