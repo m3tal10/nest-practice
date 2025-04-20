@@ -4,8 +4,8 @@ import { AppService } from './app.service';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
-import { TransformInterceptor } from './common/interceptors/transform.interceptor';
-import { RolesGuard } from './common/guards/roles.guard';
+import { TransformInterceptor } from './app/common/interceptors/transform.interceptor';
+import { RolesGuard } from './app/common/guards/roles.guard';
 import { UsersModule } from './app/modules/users/users.module';
 import { AuthModule } from './app/modules/auth/auth.module';
 

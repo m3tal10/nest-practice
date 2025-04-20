@@ -8,9 +8,9 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { ZodValidationPipe } from 'src/common/pipes/zod-validation.pipe';
+import { ZodValidationPipe } from 'src/app/common/pipes/zod-validation.pipe';
 import { CreateUserDto, createUserSchema } from './dto/create-user.dto';
-import { SetMessage } from 'src/common/decorators/set-message.decorator';
+import { SetMessage } from 'src/app/common/decorators/set-message.decorator';
 
 @Controller('users')
 export class UsersController {
