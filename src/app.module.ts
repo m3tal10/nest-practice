@@ -8,6 +8,7 @@ import { TransformInterceptor } from './app/common/interceptors/transform.interc
 import { RolesGuard } from './app/common/guards/roles.guard';
 import { UsersModule } from './app/modules/users/users.module';
 import { AuthModule } from './app/modules/auth/auth.module';
+import { ProductModule } from './app/modules/product/product.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { AuthModule } from './app/modules/auth/auth.module';
     }),
     UsersModule,
     AuthModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [
